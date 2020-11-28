@@ -2,7 +2,6 @@ package com.codebaobao.controller.admin;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.codebaobao.exception.UserNameAndPwdErrorException;
 import com.codebaobao.exception.UserNotFoundException;
 import com.codebaobao.exception.iIllegalStateException;
 import com.codebaobao.model.Doctor;
@@ -14,12 +13,12 @@ import com.codebaobao.service.DoctorService;
 import com.codebaobao.service.RoleService;
 import com.codebaobao.utils.JwtTokenUtil;
 import com.codebaobao.utils.PwdUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,11 +48,7 @@ public class AdminLoginController {
     RoleService roleService;
 
     @RequestMapping("/login")
-    public Result<String> adminLogin(@RequestBody final LoginVo loginVo) {
-
-        if (Objects.isNull(loginVo) || StringUtils.isBlank(loginVo.getUserName()) || StringUtils.isBlank(loginVo.getPassWord())) {
-            throw new UserNameAndPwdErrorException("账号密码不能为空");
-        }
+    public Result<String> adminLogin(@Valid @RequestBody final LoginVo loginVo) {
 
         final Doctor doctorInfo = this.doctorService.getOne(new QueryWrapper<Doctor>()
                 .eq("account_name", loginVo.getUserName()));

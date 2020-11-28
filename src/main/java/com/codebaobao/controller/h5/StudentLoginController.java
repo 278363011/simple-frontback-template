@@ -3,7 +3,6 @@ package com.codebaobao.controller.h5;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.codebaobao.controller.admin.AdminLoginController;
-import com.codebaobao.exception.UserNameAndPwdErrorException;
 import com.codebaobao.exception.UserNotFoundException;
 import com.codebaobao.exception.iIllegalStateException;
 import com.codebaobao.model.Role;
@@ -15,12 +14,12 @@ import com.codebaobao.service.RoleService;
 import com.codebaobao.service.StudentService;
 import com.codebaobao.utils.JwtTokenUtil;
 import com.codebaobao.utils.PwdUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,17 +40,13 @@ public class StudentLoginController {
 
     @Autowired
     JwtTokenUtil jwtTokenUtil;
-
     @Autowired
     StudentService studentService;
     @Autowired
     RoleService roleService;
 
     @RequestMapping("/login")
-    public Result<String> dockLogin(@RequestBody final LoginVo loginVo) {
-        if (Objects.isNull(loginVo) || StringUtils.isBlank(loginVo.getUserName()) || StringUtils.isBlank(loginVo.getPassWord())) {
-            throw new UserNameAndPwdErrorException("账号密码不能为空");
-        }
+    public Result<String> dockLogin(@Valid @RequestBody final LoginVo loginVo) {
 
         final Student studentInfo = this.studentService.getOne(new QueryWrapper<Student>()
                 .eq("account_name", loginVo.getUserName()));

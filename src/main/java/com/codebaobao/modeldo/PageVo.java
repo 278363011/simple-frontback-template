@@ -11,11 +11,9 @@ import javax.validation.constraints.NotNull;
 @Builder
 @Accessors
 @AllArgsConstructor
-public class LoginVo {
-    @NotNull(message = "用户名不能为空")
-    String userName;
-    @NotNull(message = "密码不能为空")
-    String passWord;
-    String verification_code;
-    String sms_code;
+public class PageVo {
+    @NotNull(message = "pageNow 不能为空")
+    private int pageNow;
+    @NotNull(message = "pageSize 不能为空")
+    private int pageSize;
 }

@@ -3,7 +3,7 @@
 <configuration status="OFF">
 
     <Properties>
-        <property name="log_pattern">%d{yyyy-MM-dd HH:mm:ss z} %-5p %c{36} %L %M - %m%x%n</property>
+        <property name="log_pattern">%d{yyyy-MM-dd HH:mm:ss,SSS} %level [%t] %logger{36}(%F:%L) - %m%n</property>
 
         <property name="file_info">logs/$${date:yyyy-MM-dd}/app-info.log</property>
         <property name="rolling_file_info_name">logs/$${date:yyyy-MM-dd}/app-info-%d{yyyy-MM-dd}-%i.log</property>

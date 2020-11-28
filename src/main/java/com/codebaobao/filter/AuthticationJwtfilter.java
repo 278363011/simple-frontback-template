@@ -30,7 +30,7 @@ public class AuthticationJwtfilter implements Filter {
 
         final String path = httpRequest.getRequestURI().substring(httpRequest.getContextPath().length()).replaceAll("[/]+$", "");
         System.out.println(path);
-        if (StringUtils.equalsIgnoreCase(path, "/user/login")) {
+        if (StringUtils.equalsIgnoreCase(path, "/admin/login") || StringUtils.equalsIgnoreCase(path, "/student/login")) {
             chain.doFilter(servletRequest, servletResponse);
         } else {
             final String authHeader = httpRequest.getHeader(this.jwtTokenUtil.getHeader());
