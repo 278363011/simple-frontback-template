@@ -1,0 +1,6 @@
+
+U	java:S106 "9Replace this use of System.out or System.err by a logger.(ÍÎÉ 8ÃÙÌúŞ.
+8
+java:S3626."Remove this redundant jump.(ûÁİ…8ı•ûŞ.
+G
+java:S5411'"*Use the primitive boolean expression here.(ş™õº8ı•ûŞ.

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.codebaobao.mapper.PsychologicalOrderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.codebaobao.model.PsychologicalOrder">
+        <id column="id" property="id" />
+        <result column="order_code" property="orderCode" />
+        <result column="order_type" property="orderType" />
+        <result column="order_date" property="orderDate" />
+        <result column="order_starttime" property="orderStarttime" />
+        <result column="order_endtime" property="orderEndtime" />
+        <result column="stu_message" property="stuMessage" />
+        <result column="doctor_message" property="doctorMessage" />
+        <result column="order_status" property="orderStatus" />
+        <result column="rate_rank" property="rateRank" />
+        <result column="doctor_id" property="doctorId" />
+        <result column="student_id" property="studentId" />
+        <result column="area_id" property="areaId" />
+        <result column="room_id" property="roomId" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="confict" property="confict" />
+        <result column="del_flag" property="delFlag" />
+    </resultMap>
+
+</mapper>
